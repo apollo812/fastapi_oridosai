@@ -12,12 +12,17 @@ keywords = ["FastAPI"]
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 requests = "^2.31.0"
 fastapi = "^0.85.1"
 uvicorn = "^0.18.3"
 SQLAlchemy = "^1.4.42"
 psycopg2-binary = "^2.9.4"
+diffusers = "^0.23.0"
+accelerate = "^0.24.1"
+safetensors = "^0.4.0"
+omegaconf = "^2.3.0"
+invisible-watermark = "^0.2.0"
 
 [tool.poetry.group.dev]
 optional = true

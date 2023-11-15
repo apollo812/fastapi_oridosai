@@ -8,9 +8,14 @@ export PROJECT=api
 
 targets: help
 
+build: ## Build the application
+	docker build . -t gluck0101/oridosai-txt2img
+
+push: ## Push the application to docker hub
+	docker push gluck0101/oridosai-txt2img
+
 up: ## Run the application
 	docker-compose up --build api
-
 
 done: lint test ## Prepare for a commit
 test: utest itest  ## Run unit and integration tests

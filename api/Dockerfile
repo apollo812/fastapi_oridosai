@@ -25,8 +25,8 @@ FROM base as dev
 
 COPY --chown=user:user ./$PROJECT /home/user/$PROJECT
 
-# CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
-EXPOSE 5000
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
+# EXPOSE 5000
 
 FROM base as test
 

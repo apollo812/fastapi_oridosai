@@ -6,15 +6,15 @@ on:
       - main
 
 jobs:
-  # test:
-  #   name: Run the test suite
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
+  test:
+    name: Run the test suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  #     - name: Run the tests
-  #       run: make test
+      - name: Run the tests
+        run: make test
 
   checks:
     name: Check code

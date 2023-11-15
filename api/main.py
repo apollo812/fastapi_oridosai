@@ -10,8 +10,7 @@ project_root = os.path.abspath(os.path.join(current_script_directory, os.pardir)
 sys.path.append(project_root)
 sys.path.append(current_script_directory)
 
-from fastapi import Depends, FastAPI, Response
-from scripts.txt2img import txt2img
+from fastapi import Depends, FastAPI
 from starlette.responses import RedirectResponse
 from starlette.status import HTTP_201_CREATED
 
@@ -23,13 +22,13 @@ async def root():
     return RedirectResponse(app.docs_url)
 
 
-@app.post("/txt2img", status_code=HTTP_201_CREATED)
-async def t2i(prompt: str):
-    result = txt2img(prompt)
-    result.save("output.png")
+# @app.post("/txt2img", status_code=HTTP_201_CREATED)
+# async def t2i(prompt: str):
+#     result = txt2img(prompt)
+#     result.save("output.png")
 
-    # Return the image file as the response content
-    with open("output.png", "rb") as f:
-        file_content = f.read()
+#     # Return the image file as the response content
+#     with open("output.png", "rb") as f:
+#         file_content = f.read()
 
-    return Response(content=file_content, media_type="image/png")
+#     return Response(content=file_content, media_type="image/png")

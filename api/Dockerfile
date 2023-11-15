@@ -1,4 +1,5 @@
-FROM python:3.10.2-slim-bullseye as base
+FROM nginx/unit:1.28.0-python3.10 as base
+# FROM python:3.10.2-slim-bullseye as base
 
 ARG PROJECT=api
 
@@ -17,14 +18,15 @@ ENV \
     POETRY_VIRTUALENVS_IN_PROJECT=true
 
 COPY --chown=user:user ./pyproject.toml ./poetry.lock ./
+COPY --chown=user:user ./config/config.json /docker-entrypoint.d/config.json
 RUN --mount=type=cache,target=/root/.cache poetry install
 
 FROM base as dev
 
 COPY --chown=user:user ./$PROJECT /home/user/$PROJECT
 
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
-
+# CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
+EXPOSE 5000
 
 FROM base as test
 

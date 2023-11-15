@@ -1,39 +1,54 @@
+# Use the specified base image
 FROM nginx/unit:1.28.0-python3.10 as base
-# FROM python:3.10.2-slim-bullseye as base
 
+# Set the default project name
 ARG PROJECT=api
 
 # Create a non-root user to run the app with.
-RUN groupadd --gid 1000 user &&  adduser --disabled-password --gecos '' --uid 1000 --gid 1000 user
+RUN groupadd --gid 1000 user && adduser --disabled-password --gecos '' --uid 1000 --gid 1000 user
+
+# Switch to the user
 USER user
 
+# Set the working directory
 WORKDIR /home/user
 
 # Install Poetry.
-RUN --mount=type=cache,target=/root/.cache pip install --user poetry==1.4.2
-ENV \
-    PATH="/home/user/.local/bin:/home/user/.venv/bin:${PATH}" \
+RUN --mount=type=cache,target=/home/user/.cache pip install --user poetry==1.4.2
+
+# Set environment variables
+ENV PATH="/home/user/.local/bin:/home/user/.venv/bin:${PATH}" \
     PYTHONUNBUFFERED=1 \
     POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=true
 
+# Copy the project files and configuration
 COPY --chown=user:user ./pyproject.toml ./poetry.lock ./
 COPY --chown=user:user ./config/config.json /docker-entrypoint.d/config.json
-RUN --mount=type=cache,target=/root/.cache poetry install
 
+# Install dependencies
+RUN --mount=type=cache,target=/home/user/.cache poetry install
+
+# Development stage
 FROM base as dev
 
+# Copy the project files
 COPY --chown=user:user ./$PROJECT /home/user/$PROJECT
 
-# CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
+# Expose the application port
 EXPOSE 5000
 
+# Test stage
 FROM base as test
 
-RUN --mount=type=cache,target=/root/.cache poetry install --with dev
+# Install development dependencies
+RUN --mount=type=cache,target=/home/user/.cache poetry install --with dev
+
+# Copy the project files
 COPY --chown=user:user ./$PROJECT /home/user/$PROJECT
+
+# Create a mypy cache directory
 RUN mkdir /home/user/.mypy_cache && chown -R user:user /home/user/.mypy_cache
 
-# Default target.
+# Default target stage
 FROM dev
-

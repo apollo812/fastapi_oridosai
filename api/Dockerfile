@@ -1,5 +1,6 @@
-FROM nginx/unit:1.28.0-python3.10 as base
+# FROM nginx/unit:1.28.0-python3.10 as base
 # FROM python:3.10.2-slim-bullseye as base
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-devel
 
 ARG PROJECT=api
 

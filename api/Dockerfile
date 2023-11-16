@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx
 
 # RUN pip install httpx pytest black isort mypy fastapi uvicorn diffusers transformers accelerate safetensors omegaconf invisible-watermark>=0.2.0 --root-user-action=ignore
-RUN pip install ./requirements.txt
 
 # Create a non-root user to run the app with.
 RUN groupadd --gid 1000 user &&  adduser --disabled-password --gecos '' --uid 1000 --gid 1000 user
@@ -17,13 +16,14 @@ WORKDIR /home/user
 FROM base as dev
 
 COPY --chown=user:user ./$PROJECT /home/user/$PROJECT
-
+RUN pip install requirements.txt
 CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
 
 
 FROM base as test
 
 COPY --chown=user:user ./$PROJECT /home/user/$PROJECT
+RUN pip install requirements-test.txt
 RUN mkdir /home/user/.mypy_cache && chown -R user:user /home/user/.mypy_cache
 
 # Default target.

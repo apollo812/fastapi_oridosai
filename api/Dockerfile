@@ -22,10 +22,12 @@ WORKDIR /home/user
 # COPY --chown=user:user ./pyproject.toml ./poetry.lock ./
 # RUN --mount=type=cache,target=/root/.cache poetry install
 
+COPY --chown=user:user ./setup.sh ./
+RUN --mount=type=cache,target=/root/.cache setup.sh
+
 FROM base as dev
 
 COPY --chown=user:user ./$PROJECT /home/user/$PROJECT
-RUN /home/user/setup.sh
 
 CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
 

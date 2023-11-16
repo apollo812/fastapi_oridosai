@@ -11,16 +11,19 @@ USER user
 
 WORKDIR /home/user
 
-# Install Poetry.
-RUN --mount=type=cache,target=/root/.cache pip install --user poetry==1.4.2
-ENV \
-    PATH="/home/user/.local/bin:/home/user/.venv/bin:${PATH}" \
-    PYTHONUNBUFFERED=1 \
-    POETRY_NO_INTERACTION=1 \
-    POETRY_VIRTUALENVS_IN_PROJECT=true
 
-COPY --chown=user:user ./pyproject.toml ./poetry.lock ./
-RUN --mount=type=cache,target=/root/.cache poetry install
+RUN base ./setup.sh
+
+# Install Poetry.
+# RUN --mount=type=cache,target=/root/.cache pip install --user poetry==1.4.2
+# ENV \
+#     PATH="/home/user/.local/bin:/home/user/.venv/bin:${PATH}" \
+#     PYTHONUNBUFFERED=1 \
+#     POETRY_NO_INTERACTION=1 \
+#     POETRY_VIRTUALENVS_IN_PROJECT=true
+
+# COPY --chown=user:user ./pyproject.toml ./poetry.lock ./
+# RUN --mount=type=cache,target=/root/.cache poetry install
 
 FROM base as dev
 

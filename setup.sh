@@ -1,0 +1,1 @@
+pip install fastapi uvicorn diffusers transformers accelerate safetensors omegaconf invisible-watermark>=0.2.0 --root-user-action=ignore

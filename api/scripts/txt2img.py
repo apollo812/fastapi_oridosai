@@ -14,10 +14,12 @@ OUTPUT_PATH = "output"
 
 def txt2img(param: Txt2ImgRequest):
     # Load stable diffusion xl model
-    if MODEL == "base":
+    if param.model == "base":
         model = load_sdxl_base_model(MODEL_TYPE, MODEL_LOAD_TYPE)
-    elif MODEL == "refiner":
+    elif param.model == "refiner":
         model = load_sdxl_refiner_model(MODEL_TYPE, MODEL_LOAD_TYPE)
+    else:
+        model = load_sdxl_base_model(MODEL_TYPE, MODEL_LOAD_TYPE)
 
     # txt2img
     image = model(

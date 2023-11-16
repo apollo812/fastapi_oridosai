@@ -12,7 +12,7 @@ MODEL = "base"
 OUTPUT_PATH = "output"
 
 
-def txt2img(Txt2ImgRequest):
+def txt2img(param: Txt2ImgRequest):
     # Load stable diffusion xl model
     if MODEL == "base":
         model = load_sdxl_base_model(MODEL_TYPE, MODEL_LOAD_TYPE)
@@ -20,7 +20,7 @@ def txt2img(Txt2ImgRequest):
         model = load_sdxl_refiner_model(MODEL_TYPE, MODEL_LOAD_TYPE)
 
     # txt2img
-    image = model(Txt2ImgRequest).images[0]
+    image = model(param).images[0]
 
     return image
     # # Save the result

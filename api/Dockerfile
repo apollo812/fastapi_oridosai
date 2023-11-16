@@ -9,12 +9,13 @@ RUN apt-get update && apt-get install -y \
 
 # Create a non-root user to run the app with.
 RUN groupadd --gid 1000 user &&  adduser --disabled-password --gecos '' --uid 1000 --gid 1000 user
-USER user
 
 WORKDIR /home/user
 
 COPY --chown=user:user ./requirements.txt ./requirements-test.txt ./
 RUN pip install -r requirements.txt
+
+USER user
 
 FROM base as dev
 

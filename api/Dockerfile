@@ -2,6 +2,9 @@ FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-devel as base
 
 ARG PROJECT=api
 
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx
+
 # Create a non-root user to run the app with.
 RUN groupadd --gid 1000 user &&  adduser --disabled-password --gecos '' --uid 1000 --gid 1000 user
 USER user

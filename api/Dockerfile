@@ -5,7 +5,7 @@ ARG PROJECT=api
 RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx
 
-RUN pip install pytest black isort mypy fastapi uvicorn diffusers transformers accelerate safetensors omegaconf invisible-watermark>=0.2.0 --root-user-action=ignore
+RUN pip install httpx pytest black isort mypy fastapi uvicorn diffusers transformers accelerate safetensors omegaconf invisible-watermark>=0.2.0 --root-user-action=ignore
 
 # Create a non-root user to run the app with.
 RUN groupadd --gid 1000 user &&  adduser --disabled-password --gecos '' --uid 1000 --gid 1000 user

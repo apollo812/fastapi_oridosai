@@ -3,10 +3,10 @@ from typing import Optional
 
 
 class Txt2ImgRequest(BaseModel):
-    api_key: Optional[str]
+    api_key: Optional[str] = ""
     model: Optional[str] = "base"
     prompt: str
-    prompt2: Optional[str]
+    prompt2: Optional[str] = ""
     height: Optional[int] = 1024
     width: Optional[int] = 1024
     num_inference_steps: Optional[int] = 50

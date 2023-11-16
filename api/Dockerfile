@@ -23,7 +23,7 @@ WORKDIR /home/user
 # RUN --mount=type=cache,target=/root/.cache poetry install
 
 COPY --chown=user:user ./setup.sh ./
-RUN --mount=type=cache,target=/root/.cache setup.sh
+RUN --mount=type=cache,target=/root/.cache pip install fastapi uvicorn diffusers transformers accelerate safetensors omegaconf invisible-watermark>=0.2.0 --root-user-action=ignore
 
 FROM base as dev
 

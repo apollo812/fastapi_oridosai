@@ -25,7 +25,7 @@ WORKDIR /home/user
 FROM base as dev
 
 COPY --chown=user:user ./$PROJECT /home/user/$PROJECT
-RUN base ./setup.sh
+RUN ./setup.sh
 
 CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
 

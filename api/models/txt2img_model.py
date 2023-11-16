@@ -18,9 +18,9 @@ class Txt2ImgRequest(BaseModel):
     output_type: Optional[str] = "pil"
     return_dict: Optional[bool] = False
     guidance_rescale: Optional[float] = 0.0
-    original_size: Optional[tuple[int]] = (1024, 1024)
+    original_size: Optional[tuple[int]] = [1024, 1024]
     crops_coords_top_left: Optional[tuple[int]] = (0, 0)
-    target_size: Optional[tuple[int]] = (1024, 1024)
-    negative_original_size: Optional[tuple[int]] = (1024, 1024)
+    target_size: Optional[tuple[int]] = [1024, 1024]
+    negative_original_size: Optional[tuple[int]] = [1024, 1024]
     negative_crops_coords_top_left: Optional[tuple[int]] = (0, 0)
-    negative_target_size: Optional[tuple[int]] = (1024, 1024)
+    negative_target_size: Optional[tuple[int]] = [1024, 1024]

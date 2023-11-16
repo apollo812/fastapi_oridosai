@@ -11,11 +11,18 @@ sys.path.append(project_root)
 sys.path.append(current_script_directory)
 
 from fastapi import Depends, FastAPI, Response
+from pydantic import BaseModel
 from scripts.txt2img import txt2img
 from starlette.responses import RedirectResponse
 from starlette.status import HTTP_201_CREATED
 
 app = FastAPI(swagger_ui_parameters={"tryItOutEnabled": True})
+
+
+class Txt2ImgRequest(BaseModel):
+    api_key: str
+    model: str
+    prompt: str
 
 
 @app.get("/")
@@ -24,8 +31,8 @@ async def root():
 
 
 @app.post("/txt2img", status_code=HTTP_201_CREATED)
-async def t2i(prompt: str):
-    result = txt2img(prompt)
+async def t2i(request_body: Txt2ImgRequest):
+    result = txt2img(request_body.prompt)
     result.save("output.png")
 
     # Return the image file as the response content

@@ -1,5 +1,5 @@
-FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-devel as base
-
+FROM runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04 as base
+ 
 ARG PROJECT=api
 
 RUN apt-get update && apt-get install -y \

@@ -1,6 +1,5 @@
 import torch
-from diffusers import (StableDiffusionXLImg2ImgPipeline, 
-                        StableDiffusionXLPipeline)
+from diffusers import StableDiffusionXLImg2ImgPipeline, StableDiffusionXLPipeline
 
 
 # Load the SDXL refiner model locally or online.

@@ -1,3 +1,8 @@
+httpx
+pytest
+black
+isort
+mypy
 fastapi
 uvicorn
 diffusers

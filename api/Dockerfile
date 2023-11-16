@@ -12,7 +12,7 @@ RUN groupadd --gid 1000 user &&  adduser --disabled-password --gecos '' --uid 10
 
 WORKDIR /home/user
 
-COPY --chown=user:user ./requirements.txt ./requirements-test.txt ./
+COPY --chown=user:user ./requirements.txt ./
 RUN pip install -r requirements.txt
 
 USER user

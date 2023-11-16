@@ -1,7 +1,6 @@
 import os
 import sys
 
-import torch
 from PIL import Image
 from utils.load_sdxl_base_model import load_sdxl_base_model
 from utils.load_sdxl_refiner_model import load_sdxl_refiner_model

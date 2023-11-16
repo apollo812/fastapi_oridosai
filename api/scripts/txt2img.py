@@ -20,8 +20,6 @@ def txt2img(param: Txt2ImgRequest):
         model = load_sdxl_refiner_model(MODEL_TYPE, MODEL_LOAD_TYPE)
 
     # txt2img
-    image = model(param).images[0]
+    image = model(param.prompt).images[0]
 
     return image
-    # # Save the result
-    # image.save(f"{OUTPUT_PATH}/{args.prompt}.png")

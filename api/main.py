@@ -11,9 +11,9 @@ sys.path.append(project_root)
 sys.path.append(current_script_directory)
 
 from fastapi import Depends, FastAPI, Response
+from scripts.txt2img import txt2img
 from starlette.responses import RedirectResponse
 from starlette.status import HTTP_201_CREATED
-from scripts.txt2img import txt2img
 
 app = FastAPI(swagger_ui_parameters={"tryItOutEnabled": True})
 

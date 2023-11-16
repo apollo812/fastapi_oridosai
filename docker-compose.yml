@@ -6,10 +6,10 @@ services:
       - db
     ports:
       - "5000:5000"
+    image: gluck0101/oridosai-txt2img
     build:
       dockerfile: ./api/Dockerfile
       context: .
-      image: gluck0101/oridosai-txt2img
     volumes:
       - ./api:/home/user/api
     environment:

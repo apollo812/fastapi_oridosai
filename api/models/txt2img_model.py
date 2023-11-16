@@ -1,11 +1,11 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Union, List
 
 
 class Txt2ImgRequest(BaseModel):
     api_key: Optional[str] = ""
     model: Optional[str] = "base"
-    prompt: str
+    prompt: Union[str, List[str]]
     prompt2: Optional[str] = ""
     height: Optional[int] = 1024
     width: Optional[int] = 1024

@@ -22,7 +22,7 @@ def txt2img(param: Txt2ImgRequest):
         model = load_sdxl_base_model(MODEL_TYPE, MODEL_LOAD_TYPE)
 
     # txt2img
-    image = model(
+    result = model(
         prompt = param.prompt,
         prompt2 = param.prompt2,
         height = param.height,
@@ -34,7 +34,7 @@ def txt2img(param: Txt2ImgRequest):
         negative_prompt_2 = param.negative_prompt_2,
         num_images_per_prompt = param.num_images_per_prompt,
         eta = param.eta,
-        # output_type = param.output_type,
+        output_type = param.output_type,
         return_dict = param.return_dict,
         guidance_rescale = param.guidance_rescale,
         original_size = param.original_size,
@@ -43,6 +43,7 @@ def txt2img(param: Txt2ImgRequest):
         negative_original_size = param.negative_original_size,
         negative_crops_coords_top_left = param.negative_crops_coords_top_left,
         negative_target_size = param.negative_target_size
-    ).images[0]
+    )
 
-    return image
+    print(result)
+    return result.images[0]

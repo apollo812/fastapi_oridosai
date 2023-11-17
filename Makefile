@@ -18,29 +18,30 @@ up: ## Run the application
 	docker-compose up --build api
 
 done: lint test ## Prepare for a commit
+
 test: utest itest  ## Run unit and integration tests
 
 ci-docker-compose := docker-compose -f .ci/docker-compose.yml
 
 utest: cleantest ## Run unit tests
-	$(ci-docker-compose) run --rm unit pytest -m unit .
+	$$(ci-docker-compose) run --rm unit pytest -m unit .
 
 itest: cleantest ## Run integration tests
-	$(ci-docker-compose) run --rm integration pytest -m integration .
+	$$(ci-docker-compose) run --rm integration pytest -m integration .
 
 check: ## Check the code base
-	$(ci-docker-compose) run --rm unit black ./$(PROJECT) --check --diff
-	$(ci-docker-compose) run --rm unit isort ./$(PROJECT) --check --diff
-	$(ci-docker-compose) run --rm -v mypycache:/home/user/.mypy_cache unit mypy ./$(PROJECT)
+	$$(ci-docker-compose) run --rm unit black ./$$PROJECT --check --diff
+	$$(ci-docker-compose) run --rm unit isort ./$$PROJECT --check --diff
+	$$(ci-docker-compose) run --rm -v mypycache:/home/user/.mypy_cache unit mypy ./$$PROJECT
 
 lint: ## Check the code base, and fix it
-	$(ci-docker-compose) run --rm unit black ./$(PROJECT)
-	$(ci-docker-compose) run --rm unit isort ./$(PROJECT)
-	$(ci-docker-compose) run --rm -v mypycache:/home/user/.mypy_cache unit mypy ./$(PROJECT)
+	$$(ci-docker-compose) run --rm unit black ./$$PROJECT
+	$$(ci-docker-compose) run --rm unit isort ./$$PROJECT
+	$$(ci-docker-compose) run --rm -v mypycache:/home/user/.mypy_cache unit mypy ./$$PROJECT
 
 cleantest:  ## Clean up test containers
-	$(ci-docker-compose) build
-	$(ci-docker-compose) down --remove-orphans
+	$$(ci-docker-compose) build
+	$$(ci-docker-compose) down --remove-orphans
 
 help: ## Display this help message
-	@awk -F '##' '/^[a-z_]+:[a-z ]+##/ { print "\033[34m"$$1"\033[0m" "\n" $$2 }' Makefile
+	@awk -F '##' '/^[a-z_]+:[a-z ]+##/ { printf "\033[34m%-20s\033[0m %s\n", $$1, $$2 }' Makefile

@@ -45,5 +45,5 @@ def txt2img(param: Txt2ImgRequest):
         negative_target_size = param.negative_target_size
     )
 
-    print(result)
-    return result.images[0]
+    print(result[0][0])
+    return result[0][0]

@@ -23,17 +23,38 @@ Done!
 ## You can also use postman.
 ![Alt text](./image/12.png)
 
-# 2.
-``git clone https://github.com/oridosai/txt2img-sdxl-p1.git``
-``cd txt2img-sdxl-p1``
+# 2. Manual installation
+### 2.1. For the first time install docker-compose (NOT docker-compose-plugin)
+```bash
+sudo apt-get update
+sudo apt-get install docker-compose
+```
 
-### Please change the image to your Docker Hub image.
+### 2.2. Remove all stopped containers, all networks not used by at least one container, all dangling images, and all dangling build cache 
+```bash
+./docker_cleanup.sh
+```
+
+### 2.3. Clone repository
+```bash
+git clone https://github.com/oridosai/txt2img-sdxl-p1.git
+cd txt2img-sdxl-p1
+```
+
+### 2.4. Make sure to change the image name in docker-compose.yml and Makefile to your Docker Hub image.
 ![Alt text](./image/11.png)
 
-``make build``
-``make push``
+### 2.5. Build docker image
+```bash
+make build
+```
 
-### Then follow the first section.
+### 2.6. Push the docker image to your docker Hub
+```bash
+make push
+```
+
+### 2.7. Then follow the steps in section 1.
 
 ### If you want, run locally run
 ``make up``

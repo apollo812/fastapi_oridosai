@@ -20,6 +20,9 @@ Done!
 
 ![Alt text](./image/10.png)
 
+## You can also use postman.
+![Alt text](./image/12.png)
+
 # 2.
 ``git clone https://github.com/oridosai/txt2img-sdxl-p1.git``
 ``cd txt2img-sdxl-p1``

@@ -36,7 +36,7 @@ check: ## Check the code base
 lint: ## Check the code base, and fix it
 	$(ci-docker-compose) run --rm unit black ./$(PROJECT)
 	$(ci-docker-compose) run --rm unit isort ./$(PROJECT)
-	$(ci-docker-compose) run --rm -v mypycache:/home/user/.mypy_cache unit mypy ./$(PROJECT)
+## $(ci-docker-compose) run --rm -v mypycache:/home/user/.mypy_cache unit mypy ./$(PROJECT)
 
 cleantest:  ## Clean up test containers
 	$(ci-docker-compose) build

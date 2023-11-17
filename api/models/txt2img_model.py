@@ -7,6 +7,7 @@ from typing import Optional, Union, List
 # Details about what each parameter means are explained in the documentation.
 
 class Txt2ImgRequest(BaseModel):
+    api_key: Optional[str] = ""
     prompt: Optional[str] = "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k"
     prompt2: Optional[str] = ""
     height: Optional[int] = 1024
@@ -27,5 +28,4 @@ class Txt2ImgRequest(BaseModel):
     negative_original_size: Optional[tuple[int, int]] = (1024, 1024)
     negative_crops_coords_top_left: Optional[tuple[int, int]] = (0, 0)
     negative_target_size: Optional[tuple[int, int]] = (1024, 1024)
-    api_key: Optional[str] = ""
     model: Optional[str] = "base"   #"base", "refiner"

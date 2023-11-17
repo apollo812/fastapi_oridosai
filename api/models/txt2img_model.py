@@ -2,6 +2,10 @@ from pydantic import BaseModel
 from typing import Optional, Union, List
 
 
+# Definition of the Txt2ImgRequest model using Pydantic's BaseModel.
+# This model specifies the parameters accepted by the txt2img function for generating images from text prompts.
+# Details about what each parameter means are explained in the documentation.
+
 class Txt2ImgRequest(BaseModel):
     prompt: Optional[str] = "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k"
     prompt2: Optional[str] = ""

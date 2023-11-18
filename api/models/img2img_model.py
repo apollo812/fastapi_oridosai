@@ -1,18 +1,26 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Union, List
 
 
-# Definition of the Txt2ImgRequest model using Pydantic's BaseModel.
-# This model specifies the parameters accepted by the txt2img function for generating images from text prompts.
+# Definition of the Img2ImgRequest model using Pydantic's BaseModel.
+# This model specifies the parameters accepted by the img2img function for generating images from images with text prompts.
 # Details about what each parameter means are explained in the documentation.
 
-class Txt2ImgRequest(BaseModel):
+class Img2ImgRequest(BaseModel):
     api_key: Optional[str] = ""
     prompt: Optional[str] = "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k"
     prompt2: Optional[str] = ""
-    height: Optional[int] = 1024
-    width: Optional[int] = 1024
+    image: Union[
+        torch.Tensor,
+        Image.Image,
+        np.ndarray,
+        List[torch.Tensor],
+        List[Image.Image],
+        List[np.ndarray]
+    ]
+    strength: Optional(float) = 0.3
     num_inference_steps: Optional[int] = 50
+    denoising_start: Optional[float] = 0.0
     denoising_end: Optional[float] = 0.0
     guidance_scale: Optional[float] = 5.0
     negative_prompt: Optional[str] = "nude adult porn"
@@ -28,4 +36,6 @@ class Txt2ImgRequest(BaseModel):
     negative_original_size: Optional[tuple[int, int]] = (1024, 1024)
     negative_crops_coords_top_left: Optional[tuple[int, int]] = (0, 0)
     negative_target_size: Optional[tuple[int, int]] = (1024, 1024)
-    model: Optional[str] = "base"   #"base", "refiner"
+    aesthetic_score: Optional[float] = 6.0
+    negative_aesthetic_score: Optional[float] = 2.5
+    clip_skip: Optional[int] = 1

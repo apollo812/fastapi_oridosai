@@ -2,7 +2,8 @@ import os
 import sys
 import torch
 
-from typing import Union
+from typing import Union, List
+import numpy as np
 from PIL import Image
 from models.txt2img_model import Txt2ImgRequest
 from utils.load_sdxl_base_model import load_sdxl_base_model

@@ -62,7 +62,7 @@ def refinerImg(img: Union[
         num_inference_steps = 50,
         denoising_start = 0.0,
         denoising_end = 0.0,
-        guidance_scale = 5.0,
+        guidance_scale = 7.0,
         negative_prompt = "nude adult porn",
         negative_prompt_2 = "nude adult porn",
         num_images_per_prompt = 1,

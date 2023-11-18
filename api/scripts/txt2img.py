@@ -1,6 +1,7 @@
 import os
 import sys
 
+from typing import Union
 from PIL import Image
 from models.txt2img_model import Txt2ImgRequest
 from utils.load_sdxl_base_model import load_sdxl_base_model

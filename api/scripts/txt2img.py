@@ -55,8 +55,8 @@ def refinerImg(img: Union[
     
     # Generate an image based on the image with input text prompts and other parameters using the loaded model.
     result = model(
-        prompt = "high resolution image, smooth, realistic, 8k",
-        prompt2 = "high resolution image, smooth, realistic, 8k",
+        prompt = "high resolution, realistic, realistic, 8k",
+        prompt2 = "high resolution, realistic, realistic, 8k",
         image = img,
         strength = 0.3,
         num_inference_steps = 50,

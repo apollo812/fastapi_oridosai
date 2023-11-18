@@ -37,6 +37,7 @@ def main(args):
     # Delete class objects and clean the buffer memory using the garbage collection
     gc.collect()
 
+
 if __name__ == '__main__':
     """
     Form command lines

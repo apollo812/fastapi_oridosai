@@ -1,5 +1,6 @@
 import json
 
+
 def read_json(FileName):
     """
     Reads a JSON file and returns the data.

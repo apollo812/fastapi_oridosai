@@ -6,7 +6,7 @@ services:
       - db
     ports:
       - "5000:5000"
-    image: oridos/txt2img:latest
+    image: gluck0101/oridosai-txt2img:latest
     build:
       dockerfile: ./api/Dockerfile
       context: .

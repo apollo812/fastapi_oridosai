@@ -1,5 +1,5 @@
 import torch
-from diffusers import StableDiffusionXLPipeline
+from diffusers import StableDiffusionXLImg2ImgPipeline
 
 
 # Load the SDXL refiner model.
@@ -9,7 +9,7 @@ def load_sdxl_refiner_model():
     # Move the model to the CUDA device for accelerated computations
     model_path = "stabilityai/stable-diffusion-xl-refiner-1.0"
     
-    pipeline = StableDiffusionXLPipeline.from_pretrained(
+    pipeline = StableDiffusionXLImg2ImgPipeline.from_pretrained(
         model_path, torch_dtype=torch.float16, variant="fp16", use_safetensors=True
     ).to("cuda")
     

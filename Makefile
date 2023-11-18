@@ -12,7 +12,7 @@ build: ## Build the application
 	docker-compose build api
 
 push: ## Push the application to docker hub
-	docker push oridos/txt2img:latest
+	docker push gluck0101/oridosai-txt2img:latest
 
 up: ## Run the application
 	docker-compose up --build api

@@ -12,8 +12,12 @@ sys.path.append(project_root)
 sys.path.append(current_script_directory)
 
 from fastapi import Depends, FastAPI, Response
+
 from scripts.txt2img import txt2img
 from models.txt2img_model import Txt2ImgRequest
+from utils.load_sdxl_base_model import load_sdxl_base_model
+from utils.load_sdxl_refiner_model import load_sdxl_refiner_model
+
 from starlette.responses import RedirectResponse
 from starlette.status import HTTP_201_CREATED
 
@@ -24,6 +28,10 @@ app = FastAPI(swagger_ui_parameters={"tryItOutEnabled": True})
 # Define a route to handle the root endpoint and redirect to the API documentation
 @app.get("/")
 async def root():
+    # Load base and refiner model at first loading
+    load_sdxl_base_model()
+    load_sdxl_refiner_model()
+
     return RedirectResponse(app.docs_url)
 
 

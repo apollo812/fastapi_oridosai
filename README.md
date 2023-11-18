@@ -57,4 +57,7 @@ make push
 ### 2.7. Then follow the steps in section 1.
 
 ### If you want, run locally run
-``make up``
+#### use localhost:5000
+```bash
+make up
+```

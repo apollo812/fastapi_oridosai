@@ -55,14 +55,14 @@ def refinerImg(img: Union[
     
     # Generate an image based on the image with input text prompts and other parameters using the loaded model.
     result = model(
-        prompt = "",
-        prompt2 = "",
+        prompt = "high resolution image, smooth, realistic, 8k",
+        prompt2 = "high resolution image, smooth, realistic, 8k",
         image = img,
         strength = 0.3,
         num_inference_steps = 50,
         denoising_start = 0.0,
         denoising_end = 0.0,
-        guidance_scale = 5.0,
+        guidance_scale = 10.0,
         negative_prompt = "nude adult porn",
         negative_prompt_2 = "nude adult porn",
         num_images_per_prompt = 1,

@@ -43,8 +43,9 @@ async def t2i(request_body: Txt2ImgRequest):
         result = txt2img(request_body)
     elif request_body.model == "refiner":
         result = txt2img(request_body)
+        print("sss", result)
         result = refinerImg(result)
-        
+
     result.save("output.png") # Save the resulting image to a file
 
     # Return the image file as the response content

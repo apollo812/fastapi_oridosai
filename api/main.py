@@ -42,8 +42,10 @@ async def t2i(request_body: Txt2ImgRequest):
         # Perform text-to-image conversion using the provided request body
         result = txt2img(request_body)
     elif request_body.model == "refiner":
+        # Perform text-to-image conversion using the provided request body
         result = txt2img(request_body)
         if result is not None:
+            # Refiner the generated image by text-to-image base model
             result = refinerImg(result)
         else:
             print("Error: txt2img function returned None")

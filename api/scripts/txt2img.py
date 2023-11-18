@@ -41,6 +41,8 @@ def txt2img(param: Txt2ImgRequest):
 
     return result[0][0]                     # Return the generated image.
 
+
+# Function for refiner images using sdxl refiner model.
 def refinerImg(img: Union[
         torch.Tensor,
         Image.Image,

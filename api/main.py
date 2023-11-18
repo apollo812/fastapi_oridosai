@@ -44,7 +44,6 @@ async def t2i(request_body: Txt2ImgRequest):
     elif request_body.model == "refiner":
         result = txt2img(request_body)
         if result is not None:
-            print("sss", result)
             result = refinerImg(result)
         else:
             print("Error: txt2img function returned None")

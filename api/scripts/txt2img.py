@@ -1,5 +1,6 @@
 import os
 import sys
+import torch
 
 from typing import Union
 from PIL import Image

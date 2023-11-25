@@ -18,10 +18,11 @@ def txt2img(param: Txt2ImgRequest):
     # DPM++ SDE Karras Scheduler 
     # Recommend steps 20 ~ 30
     common_config = {
-        'beta_start': 0.0001,
-        'beta_end': 0.02,
+        'beta_start': 0.00085,
+        'beta_end': 0.012,
         'beta_schedule': 'scaled_linear',
-        "use_karras_sigmas": True
+        "use_karras_sigmas": True,
+        "use_lu_lambdas": True
     }
 
     dpmpp_2m_k = DPMSolverMultistepScheduler(**common_config)

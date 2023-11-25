@@ -18,6 +18,9 @@ def txt2img(param: Txt2ImgRequest):
     # DPM++ SDE Karras Scheduler 
     # Recommend steps 20 ~ 30
     common_config = {
+        'beta_start': 0.0001,
+        'beta_end': 0.02,
+        'beta_schedule': 'scaled_linear',
         "use_karras_sigmas": True
     }
 

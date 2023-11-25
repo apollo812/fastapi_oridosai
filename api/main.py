@@ -50,10 +50,10 @@ async def t2i(request_body: Txt2ImgRequest):
         else:
             print("Error: txt2img function returned None")
 
-    # result.save("output.png") # Save the resulting image to a file
+    result.save("output.png") # Save the resulting image to a file
 
-    # # Return the image file as the response content
-    # with open("output.png", "rb") as f:
-    #     file_content = f.read()
+    # Return the image file as the response content
+    with open("output.png", "rb") as f:
+        file_content = f.read()
 
-    # return Response(content=file_content, media_type="image/png") # Return the image content as the API response
+    return Response(content=file_content, media_type="image/png") # Return the image content as the API response

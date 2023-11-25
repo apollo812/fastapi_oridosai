@@ -8,7 +8,7 @@ from typing import Optional
 
 class Txt2ImgRequest(BaseModel):
     api_key: Optional[str] = ""
-    prompt: Optional[str] = "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k"
+    prompt: Optional[str] = "An image a happy couple walking along the beach, beautiful sunset, amazing full view, detailed, 8k"
     prompt2: Optional[str] = ""
     height: Optional[int] = 1024
     width: Optional[int] = 1024

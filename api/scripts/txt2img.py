@@ -54,7 +54,7 @@ def txt2img(param: Txt2ImgRequest):
 
     sdxl_img = model(**params, generator=generator)
 
-    return sdxl_img[0]                     # Return the generated image.
+    return sdxl_img[0][0]                     # Return the generated image.
 
 
 # Function for refiner images using sdxl refiner model.

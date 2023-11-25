@@ -8,20 +8,18 @@ from PIL import Image
 from models.txt2img_model import Txt2ImgRequest
 from utils.load_sdxl_base_model import load_sdxl_base_model
 from utils.load_sdxl_refiner_model import load_sdxl_refiner_model
-from diffusers import DPMSolverMultistepScheduler
+from diffusers import EulerAncestralDiscreteScheduler
 
 # Function for generating images from text prompts.
 def txt2img(param: Txt2ImgRequest):
     # Load the base model for text-to-image generation.
     model = load_sdxl_base_model()
     
-    model.scheduler = DPMSolverMultistepScheduler.from_pretrained(
-        "runwayml/stable-diffusion-v1-5",
-        subfolder="scheduler"
+    model.scheduler = EulerAncestralDiscreteScheduler.from_config(
+        model.scheduler.config
     )
 
-    seed = 1
-    generator = torch.Generator(device='cuda').manual_seed(seed)
+    generator = torch.Generator(device='cuda').manual_seed(8)
 
     params = {
         'prompt': [param.prompt],

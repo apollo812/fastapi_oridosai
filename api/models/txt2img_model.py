@@ -12,9 +12,9 @@ class Txt2ImgRequest(BaseModel):
     prompt2: Optional[str] = ""
     height: Optional[int] = 1024
     width: Optional[int] = 1024
-    num_inference_steps: Optional[int] = 50
+    num_inference_steps: Optional[int] = 25
     denoising_end: Optional[float] = 0.0
-    guidance_scale: Optional[float] = 5.0
+    guidance_scale: Optional[float] = 7.0
     negative_prompt: Optional[str] = "nude adult porn"
     negative_prompt_2: Optional[str] = "nude adult porn"
     num_images_per_prompt: Optional[int] = 1

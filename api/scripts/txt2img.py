@@ -8,27 +8,15 @@ from PIL import Image
 from models.txt2img_model import Txt2ImgRequest
 from utils.load_sdxl_base_model import load_sdxl_base_model
 from utils.load_sdxl_refiner_model import load_sdxl_refiner_model
-from diffusers import DPMSolverMultistepScheduler
+from diffusers import DPMSolverMultistepScheduler, DPMSolverSinglestepScheduler
 
 # Function for generating images from text prompts.
 def txt2img(param: Txt2ImgRequest):
     # Load the base model for text-to-image generation.
     model = load_sdxl_base_model()
-    
-    # DPM++ SDE Karras Scheduler 
-    # Recommend steps 20 ~ 30
-    common_config = {
-        'beta_start': 0.00085,
-        'beta_end': 0.012,
-        'beta_schedule': 'scaled_linear',
-        "use_karras_sigmas": True,
-        "use_lu_lambdas": True
-    }
 
-    dpmpp_2m_k = DPMSolverMultistepScheduler(**common_config)
-    model.scheduler = dpmpp_2m_k
     generator = torch.Generator(device='cuda').manual_seed(12345)
-
+    
     params = {
         'prompt': [param.prompt],
         'prompt2' : [param.prompt],
@@ -51,6 +39,30 @@ def txt2img(param: Txt2ImgRequest):
         'negative_crops_coords_top_left' : param.negative_crops_coords_top_left,
         'negative_target_size' : param.negative_target_size
     }
+    
+    # DPM++ SDE Karras "DPMPP_SDE_K": (DPMSolverSinglestepScheduler, {"use_karras_sigmas": True}), 
+    # Recommend steps 10 ~ 15
+    DPMPP_SDE_K_config = {
+        'beta_start': 0.00085,
+        'beta_end': 0.012,
+        'beta_schedule': 'scaled_linear',
+        "use_karras_sigmas": True
+    }
+    dpmpp_sde_k = DPMSolverSinglestepScheduler(**DPMPP_SDE_K_config)
+    model.scheduler = dpmpp_sde_k
+
+    # DPM++ 2M Karras Scheduler 
+    # Recommend steps 20 ~ 30
+    # DPMPP_2M_K_config = {
+    #     'beta_start': 0.00085,
+    #     'beta_end': 0.012,
+    #     'beta_schedule': 'scaled_linear',
+    #     "use_karras_sigmas": True
+    # }
+
+    # dpmpp_2m_k = DPMSolverMultistepScheduler(**DPMPP_2M_K_config)
+    # model.scheduler = dpmpp_2m_k
+
 
     sdxl_img = model(**params, generator=generator)
 

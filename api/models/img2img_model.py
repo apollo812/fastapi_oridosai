@@ -22,7 +22,7 @@ class Img2ImgRequest(BaseModel):
         List[Image.Image],
         List[np.ndarray]
     ]
-    strength: Optional(float) = 0.3
+    strength: Optional[float] = 0.3
     num_inference_steps: Optional[int] = 50
     denoising_start: Optional[float] = 0.0
     denoising_end: Optional[float] = 0.0

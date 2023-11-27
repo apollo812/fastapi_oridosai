@@ -8,6 +8,7 @@ from typing import Optional
 
 class Txt2ImgRequest(BaseModel):
     api_key: Optional[str] = ""
+    scheduler_name: Optional[str] = "unipc"         # dpmpp_sde_k, dpmpp_2m_k, unipc, ddim
     prompt: Optional[str] = "An image a happy couple walking along the beach, beautiful sunset, amazing full view, detailed, 8k"
     prompt2: Optional[str] = ""
     height: Optional[int] = 1024

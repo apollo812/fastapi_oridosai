@@ -8,7 +8,7 @@ from PIL import Image
 from models.txt2img_model import Txt2ImgRequest
 from utils.load_sdxl_base_model import load_sdxl_base_model
 from utils.load_sdxl_refiner_model import load_sdxl_refiner_model
-from diffusers import DPMSolverMultistepScheduler, DPMSolverSinglestepScheduler
+from utils.load_scheduler import load_scheduler
 
 # Function for generating images from text prompts.
 def txt2img(param: Txt2ImgRequest):
@@ -31,7 +31,7 @@ def txt2img(param: Txt2ImgRequest):
         'eta' : param.eta,
         'output_type' : param.output_type,
         'return_dict' : param.return_dict,
-        'guidance_rescale' : param.guidance_rescale,
+        'guidance_rescale' : 0.7 if param.scheduler_name == "ddim" else param.guidance_rescale,
         'original_size' : param.original_size,
         'crops_coords_top_left' : param.crops_coords_top_left,
         'target_size' : param.target_size,
@@ -40,29 +40,7 @@ def txt2img(param: Txt2ImgRequest):
         'negative_target_size' : param.negative_target_size
     }
     
-    # DPM++ SDE Karras "DPMPP_SDE_K": (DPMSolverSinglestepScheduler, {"use_karras_sigmas": True}), 
-    # Recommend steps 10 ~ 15
-    DPMPP_SDE_K_config = {
-        'beta_start': 0.00085,
-        'beta_end': 0.012,
-        'beta_schedule': 'scaled_linear',
-        "use_karras_sigmas": True
-    }
-    dpmpp_sde_k = DPMSolverSinglestepScheduler(**DPMPP_SDE_K_config)
-    model.scheduler = dpmpp_sde_k
-
-    # DPM++ 2M Karras Scheduler 
-    # Recommend steps 20 ~ 30
-    # DPMPP_2M_K_config = {
-    #     'beta_start': 0.00085,
-    #     'beta_end': 0.012,
-    #     'beta_schedule': 'scaled_linear',
-    #     "use_karras_sigmas": True
-    # }
-
-    # dpmpp_2m_k = DPMSolverMultistepScheduler(**DPMPP_2M_K_config)
-    # model.scheduler = dpmpp_2m_k
-
+    model.scheduler = load_scheduler(param.scheduler_name)
 
     sdxl_img = model(**params, generator=generator)
 

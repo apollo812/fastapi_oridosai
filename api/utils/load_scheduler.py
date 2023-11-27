@@ -2,13 +2,17 @@ import torch
 from diffusers import DPMSolverMultistepScheduler, DPMSolverSinglestepScheduler, DDIMScheduler, UniPCMultistepScheduler
 
 
+# Define a function to load a diffuser scheduler based on the specified scheduler name.
 def load_scheduler(scheduler: str):
+    # Define the main configuration for the diffuser schedulers.
     main_config = {
         'beta_start': 0.00085,
         'beta_end': 0.012,
         'beta_schedule': 'scaled_linear',
         'use_karras_sigmas': True
     }
+
+    # Determine the scheduler based on the input string.
     match scheduler:
         case 'dpmpp_sde_k':
             # Recommend steps 10 ~ 15

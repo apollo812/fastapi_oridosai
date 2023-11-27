@@ -13,7 +13,8 @@ def load_sdxl_base_model():
         model_path, 
         torch_dtype=torch.float16, 
         variant="fp16", 
-        use_safetensors=True
+        use_safetensors=True,
+        add_watermarker=False
     ).to("cuda")
     
     return pipeline     # Return the loaded and configured SDXL base model pipeline.

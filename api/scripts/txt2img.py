@@ -15,8 +15,10 @@ def txt2img(param: Txt2ImgRequest):
     # Load the base model for text-to-image generation.
     model = load_sdxl_base_model()
 
-    generator = torch.Generator(device='cuda').manual_seed(12345)
+    # Initialize a random number generator for CUDA.
+    generator = torch.Generator(device='cuda').manual_seed(0)
     
+    # Define parameters for text-to-image generation.
     params = {
         'prompt': [param.prompt],
         'prompt2' : [param.prompt],
@@ -40,12 +42,14 @@ def txt2img(param: Txt2ImgRequest):
         'negative_target_size' : param.negative_target_size
     }
     
+    # Load the scheduler based on the specified scheduler name.
     model.scheduler = load_scheduler(param.scheduler_name)
 
+    # Generate an image using the base model and provided parameters.
     sdxl_img = model(**params, generator=generator)
 
-    return sdxl_img[0][0]                     # Return the generated image.
-
+    # Return the generated image.
+    return sdxl_img[0][0]                     
 
 # Function for refiner images using sdxl refiner model.
 def refinerImg(img: Union[

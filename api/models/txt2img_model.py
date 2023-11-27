@@ -12,7 +12,7 @@ class Txt2ImgRequest(BaseModel):
     prompt: Optional[str] = "An image a happy couple walking along the beach, beautiful sunset, amazing full view, detailed, 8k"
     prompt2: Optional[str] = ""
     num_inference_steps: Optional[int] = 25
-    seed: Optional[int] = 2147483647
+    seed: Optional[int] = -1
     height: Optional[int] = 1024
     width: Optional[int] = 1024
     denoising_end: Optional[float] = 0.0

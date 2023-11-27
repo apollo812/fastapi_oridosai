@@ -11,9 +11,10 @@ class Txt2ImgRequest(BaseModel):
     scheduler_name: Optional[str] = "unipc"         # dpmpp_sde_k, dpmpp_2m_k, unipc, ddim
     prompt: Optional[str] = "An image a happy couple walking along the beach, beautiful sunset, amazing full view, detailed, 8k"
     prompt2: Optional[str] = ""
+    num_inference_steps: Optional[int] = 25
+    seed: Optional[int] = 2147483647
     height: Optional[int] = 1024
     width: Optional[int] = 1024
-    num_inference_steps: Optional[int] = 25
     denoising_end: Optional[float] = 0.0
     guidance_scale: Optional[float] = 7.0
     negative_prompt: Optional[str] = "nude adult porn"

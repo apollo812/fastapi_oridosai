@@ -16,7 +16,7 @@ def txt2img(param: Txt2ImgRequest):
     model = load_sdxl_base_model()
 
     # Initialize a random number generator for CUDA.
-    generator = torch.Generator(device='cuda').manual_seed(0)
+    generator = torch.Generator(device='cuda').manual_seed(param.seed)
     
     # Define parameters for text-to-image generation.
     params = {

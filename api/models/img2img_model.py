@@ -36,6 +36,3 @@ class Img2ImgRequest(BaseModel):
     aesthetic_score: Optional[float] = 6.0
     negative_aesthetic_score: Optional[float] = 2.5
     clip_skip: Optional[int] = 1
-
-    class Config:
-        arbitrary_types_allowed = True

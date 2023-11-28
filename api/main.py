@@ -73,12 +73,12 @@ async def i2i(request_body: Img2ImgRequest = Depends(), file: UploadFile = File(
     # Convert the file contents to a PIL Image object
     image = Image.open(io.BytesIO(contents))
     print("here", image)
-    # result = img2img(received_data, image)
+    result = img2img(received_data, image)
 
-    # result.save("output.png") # Save the resulting image to a file
+    result.save("output.png") # Save the resulting image to a file
 
     # Return the image file as the response content
-    # with open("output.png", "rb") as f:
-    #     file_content = f.read()
+    with open("output.png", "rb") as f:
+        file_content = f.read()
 
-    # return Response(content=file_content, media_type="image/png") # Return the image content as the API response
+    return Response(content=file_content, media_type="image/png") # Return the image content as the API response

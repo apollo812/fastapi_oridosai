@@ -1,5 +1,6 @@
 import os
 import sys
+import io
 
 # Get the current script's directory
 current_script_directory = os.path.dirname(os.path.abspath(__file__))

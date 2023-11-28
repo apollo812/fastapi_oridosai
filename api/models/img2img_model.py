@@ -4,7 +4,7 @@ import numpy as np
 from typing import Union, List
 from PIL import Image
 from pydantic import BaseModel
-from typing import Optional, Union, List
+from typing import Optional, Union, List, Tuple
 
 # Definition of the Img2ImgRequest model using Pydantic's BaseModel.
 # This model specifies the parameters accepted by the img2img function for generating images from images with text prompts.
@@ -27,12 +27,12 @@ class Img2ImgRequest(BaseModel):
     output_type: Optional[str] = "pil"
     return_dict: Optional[bool] = False
     guidance_rescale: Optional[float] = 0.0
-    original_size: Optional[tuple[int, int]] = (1024, 1024)
-    crops_coords_top_left: Optional[tuple[int, int]] = (0, 0)
-    target_size: Optional[tuple[int, int]] = (1024, 1024)
-    negative_original_size: Optional[tuple[int, int]] = (1024, 1024)
-    negative_crops_coords_top_left: Optional[tuple[int, int]] = (0, 0)
-    negative_target_size: Optional[tuple[int, int]] = (1024, 1024)
+    original_size: Optional[Tuple[int, int]] = (1024, 1024)
+    crops_coords_top_left: Optional[Tuple[int, int]] = (0, 0)
+    target_size: Optional[Tuple[int, int]] = (1024, 1024)
+    negative_original_size: Optional[Tuple[int, int]] = (1024, 1024)
+    negative_crops_coords_top_left: Optional[Tuple[int, int]] = (0, 0)
+    negative_target_size: Optional[Tuple[int, int]] = (1024, 1024)
     aesthetic_score: Optional[float] = 6.0
     negative_aesthetic_score: Optional[float] = 2.5
     clip_skip: Optional[int] = 1

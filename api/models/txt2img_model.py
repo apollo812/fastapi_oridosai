@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, Tuple
+from typing import Optional
 
 
 # Definition of the Txt2ImgRequest model using Pydantic's BaseModel.
@@ -24,10 +24,10 @@ class Txt2ImgRequest(BaseModel):
     output_type: Optional[str] = "pil"
     return_dict: Optional[bool] = False
     guidance_rescale: Optional[float] = 0.0
-    original_size: Optional[Tuple[int, int]] = (1024, 1024)
-    crops_coords_top_left: Optional[Tuple[int, int]] = (0, 0)
-    target_size: Optional[Tuple[int, int]] = (1024, 1024)
-    negative_original_size: Optional[Tuple[int, int]] = (1024, 1024)
-    negative_crops_coords_top_left: Optional[Tuple[int, int]] = (0, 0)
-    negative_target_size: Optional[Tuple[int, int]] = (1024, 1024)
+    original_size: Optional[tuple[int, int]] = (1024, 1024)
+    crops_coords_top_left: Optional[tuple[int, int]] = (0, 0)
+    target_size: Optional[tuple[int, int]] = (1024, 1024)
+    negative_original_size: Optional[tuple[int, int]] = (1024, 1024)
+    negative_crops_coords_top_left: Optional[tuple[int, int]] = (0, 0)
+    negative_target_size: Optional[tuple[int, int]] = (1024, 1024)
     model: Optional[str] = "base"   #"base", "refiner"

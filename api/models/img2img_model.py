@@ -14,7 +14,7 @@ class Img2ImgRequest(BaseModel):
     api_key: Optional[str] = ""
     prompt: Optional[str] = "High resolution"
     prompt2: Optional[str] = ""
-    # image: UploadFile = File(...)
+    image: Optional[str] = ""
     strength: Optional[float] = 0.3
     num_inference_steps: Optional[int] = 50
     denoising_start: Optional[float] = 0.0

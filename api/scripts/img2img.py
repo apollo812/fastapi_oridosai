@@ -17,3 +17,14 @@ def img2img(param: Img2ImgRequest, image):
     image = model(param.prompt, image=init_image).images[0]
     
     return image                    # Return the generated image.
+
+# Function for generating images from images with text prompts.
+def img2img_url(param: Img2ImgRequest):
+    # Load the refiner model for image-to-image generation.
+    model = load_sdxl_refiner_model()
+    
+    init_image = load_image(param.image).convert("RGB")
+    # Generate an image based on the image with input text prompts and other parameters using the loaded model.
+    image = model(param.prompt, image=init_image).images[0]
+    
+    return image                    # Return the generated image.

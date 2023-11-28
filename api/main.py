@@ -13,7 +13,7 @@ sys.path.append(project_root)
 sys.path.append(current_script_directory)
 
 from PIL import Image
-from fastapi import Depends, FastAPI, Response, File, UploadFile
+from fastapi import Depends, FastAPI, Response, File, UploadFile, Depends
 from scripts.txt2img import txt2img, refinerImg
 from scripts.img2img import img2img
 from models.txt2img_model import Txt2ImgRequest
@@ -64,14 +64,16 @@ async def t2i(request_body: Txt2ImgRequest):
 
 # Define a route to handle the image-to-image conversion endpoint
 @app.post("/img2img", status_code=HTTP_201_CREATED)
-async def i2i(request_body:Img2ImgRequest, file: UploadFile = File(...), ):
+async def i2i(request_body: Img2ImgRequest = Depends(), file: UploadFile = File(...)):
+    received_data= request_body.dict()
+
     # Perform text-to-image conversion using the provided request body
     contents = await file.read()
     
     # Convert the file contents to a PIL Image object
     image = Image.open(io.BytesIO(contents))
     print("here", image)
-    result = img2img(request_body, image)
+    result = img2img(received_data, image)
 
     result.save("output.png") # Save the resulting image to a file
 

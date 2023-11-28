@@ -5,7 +5,6 @@ from typing import Union, List
 from PIL import Image
 from pydantic import BaseModel
 from typing import Optional, Union, List
-from fastapi import File, UploadFile
 
 # Definition of the Img2ImgRequest model using Pydantic's BaseModel.
 # This model specifies the parameters accepted by the img2img function for generating images from images with text prompts.
@@ -15,7 +14,7 @@ class Img2ImgRequest(BaseModel):
     api_key: Optional[str] = ""
     prompt: Optional[str] = "Astronaut in a jungle, cold color palette, muted colors, detailed, 8k"
     prompt2: Optional[str] = ""
-    image: UploadFile = File(...)
+    # image: UploadFile = File(...)
     strength: Optional[float] = 0.3
     num_inference_steps: Optional[int] = 50
     denoising_start: Optional[float] = 0.0

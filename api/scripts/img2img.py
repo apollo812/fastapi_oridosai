@@ -17,7 +17,7 @@ def img2img(param: Img2ImgRequest, image):
     # init_image = load_image(url).convert("RGB")
     init_image = load_image(image).convert("RGB")
     prompt = "a photo of an astronaut riding a horse on mars"
-    image = model(prompt, init_image).images[0]
+    image = model(param.prompt, init_image).images[0]
     # Generate an image based on the image with input text prompts and other parameters using the loaded model.
     # result = model(
     #     prompt = param.prompt,

@@ -8,9 +8,7 @@ from utils.load_sdxl_refiner_model import load_sdxl_refiner_model
 
 
 # Function for generating images from images with text prompts.
-def img2img(param, image):
-    print("hhhh", image)
-    print("hhhh11111", param.prompt)
+def img2img(param: Img2ImgRequest, image):
     # Load the refiner model for image-to-image generation.
     model = load_sdxl_refiner_model()
     
@@ -31,12 +29,12 @@ def img2img(param, image):
         output_type = param.output_type,
         return_dict = param.return_dict,
         guidance_rescale = param.guidance_rescale,
-        # original_size = param.original_size,
-        # crops_coords_top_left = param.crops_coords_top_left,
-        # target_size = param.target_size,
-        # negative_original_size = param.negative_original_size,
-        # negative_crops_coords_top_left = param.negative_crops_coords_top_left,
-        # negative_target_size = param.negative_target_size,
+        original_size = param.original_size,
+        crops_coords_top_left = param.crops_coords_top_left,
+        target_size = param.target_size,
+        negative_original_size = param.negative_original_size,
+        negative_crops_coords_top_left = param.negative_crops_coords_top_left,
+        negative_target_size = param.negative_target_size,
         aesthetic_score = param.aesthetic_score,
         negative_aesthetic_score = param.negative_aesthetic_score,
         clip_skip = param.clip_skip

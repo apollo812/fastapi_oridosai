@@ -23,6 +23,10 @@ Done!
 ## You can also use postman.
 ![Alt text](./image/12.png)
 
+### Runpod
+port 5000
+capacity 75GB
+
 # 2. Manual installation
 ### 2.1. For the first time install docker-compose (NOT docker-compose-plugin)
 ```bash
@@ -39,6 +43,10 @@ sudo apt-get install docker-compose
 ```bash
 git clone https://github.com/oridosai/txt2img-sdxl-p1.git
 cd txt2img-sdxl-p1
+```
+```bash
+git pull --all
+git merge --strategy=recursive --strategy-option=ours --no-ff origin/dev
 ```
 
 ### 2.4. Make sure to change the image name in docker-compose.yml and Makefile to your Docker Hub image.
@@ -61,3 +69,8 @@ make push
 ```bash
 make up
 ```
+
+# Notes:
+## num_inference_steps is 10 ~ 30
+## num_inference_steps: dpmpp_sde_k, ddim recommend 10 ~ 15, unipc, dpmpp_2m_k recommend 20 ~ 30
+## If you set scheduler_name = "" empty string, it will use base model only

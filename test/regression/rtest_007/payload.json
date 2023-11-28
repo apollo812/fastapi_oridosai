@@ -1,6 +1,6 @@
 {
     "api_key": "",
-    "scheduler_name": "unipc",
+    "scheduler_name": "",
     "prompt": "An image a happy couple walking along the beach, beautiful sunset, amazing full view, ultra realistic, ulta detailed, 8k",
     "prompt2": "",
     "num_inference_steps": 25,

@@ -31,3 +31,4 @@ class Txt2ImgRequest(BaseModel):
     negative_crops_coords_top_left: Optional[tuple[int, int]] = (0, 0)
     negative_target_size: Optional[tuple[int, int]] = (1024, 1024)
     model: Optional[str] = "base"   #"base", "refiner"
+    refiner_prompt: Optional[str] = "high resolution, realistic, 8k, decent, beautiful, high quality"

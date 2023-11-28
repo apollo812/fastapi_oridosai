@@ -1,7 +1,7 @@
 {
     "api_key": "",
-    "scheduler_name": "unipc",
-    "prompt": "An image a happy couple walking along the beach, beautiful sunset, amazing full view, ultra realistic, ulta detailed, 8k",
+    "scheduler_name": "",
+    "prompt": "A cartoon image of a happy baby standing, laughing, full view, on a solid white background, detailed, 8k",
     "prompt2": "",
     "num_inference_steps": 25,
     "seed": -1,

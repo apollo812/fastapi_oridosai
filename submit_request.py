@@ -1,6 +1,7 @@
 import os
 import gc
 import time
+import random
 import argparse
 from pathlib import Path
 
@@ -24,6 +25,9 @@ def main(args):
         
         # json data
         data = read_json(payload_list[i])
+
+        # Change the seed
+        data["seed"] = random.randint(10, 2**32 - 1)
 
         # Call oridosai API
         downloader = OridosAIAPI(args.api_url, data, image_path_list[i])
@@ -55,6 +59,10 @@ if __name__ == '__main__':
     os.path.join(current_dir, "test", "regression", "rtest_001", "payload.json"),
     os.path.join(current_dir, "test", "regression", "rtest_002", "payload.json"),
     os.path.join(current_dir, "test", "regression", "rtest_003", "payload.json"),
+    os.path.join(current_dir, "test", "regression", "rtest_004", "payload.json"),
+    os.path.join(current_dir, "test", "regression", "rtest_005", "payload.json"),
+    os.path.join(current_dir, "test", "regression", "rtest_006", "payload.json"),
+    os.path.join(current_dir, "test", "regression", "rtest_007", "payload.json"),
     ]
 
     # Input image directory
@@ -66,7 +74,7 @@ if __name__ == '__main__':
     ]
     
     # URL
-    api_url = "https://98qjbqboqy17x9-5000.proxy.runpod.net/txt2img"
+    api_url = "https://0sqohlamccaq28-5000.proxy.runpod.net/txt2img"
 
     parser = argparse.ArgumentParser(description='Download an image from a POST request.')
     parser.add_argument('--api_url', type=str, default=api_url, help='URL to send the POST request to')

@@ -8,7 +8,8 @@ from utils.load_sdxl_refiner_model import load_sdxl_refiner_model
 
 
 # Function for generating images from images with text prompts.
-def img2img(param: Img2ImgRequest):
+def img2img(param: Img2ImgRequest, image):
+    print("hhhh", image)
     # Load the refiner model for image-to-image generation.
     model = load_sdxl_refiner_model()
     
@@ -16,7 +17,7 @@ def img2img(param: Img2ImgRequest):
     result = model(
         prompt = param.prompt,
         prompt2 = param.prompt2,
-        # image = image,
+        image = image,
         strength = param.strength,
         num_inference_steps = param.num_inference_steps,
         denoising_start = param.denoising_start,

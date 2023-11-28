@@ -11,3 +11,4 @@ accelerate
 safetensors
 omegaconf
 invisible-watermark>=0.2.0
+python-multipart

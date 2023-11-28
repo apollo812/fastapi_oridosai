@@ -12,12 +12,8 @@ def img2img(param: Img2ImgRequest, image):
     # Load the refiner model for image-to-image generation.
     model = load_sdxl_refiner_model()
     
-    url = "https://huggingface.co/datasets/patrickvonplaten/images/resolve/main/aa_xl/000000009.png"
-
-    # init_image = load_image(url).convert("RGB")
     init_image = load_image(image).convert("RGB")
-    prompt = "a photo of an astronaut riding a horse on mars"
-    image = model(param.prompt, image=init_image).images[0]
+    image = model(**param, image=init_image).images[0]
     # Generate an image based on the image with input text prompts and other parameters using the loaded model.
     # result = model(
     #     prompt = param.prompt,

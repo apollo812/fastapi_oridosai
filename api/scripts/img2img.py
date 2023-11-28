@@ -40,4 +40,4 @@ def img2img(param: Img2ImgRequest, image):
         clip_skip = param.clip_skip
     )
 
-    return result[0][0]                     # Return the generated image.
+    return result[0]                    # Return the generated image.

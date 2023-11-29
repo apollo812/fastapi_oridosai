@@ -45,7 +45,7 @@ def txt2img(param: Txt2ImgRequest):
         # Initialize a random number generator for CUDA.
         generator = torch.Generator(device='cuda').manual_seed(param.seed)
         
-        model.scheduler = load_scheduler(param.scheduler_name, model)
+        model.scheduler = load_scheduler(param.scheduler_name)
         
         # Generate an image using the base model and provided parameters.
         sdxl_img = model(**params, generator=generator)

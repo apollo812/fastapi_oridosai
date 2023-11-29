@@ -64,7 +64,7 @@ def refinerImg(img: Union[
         List[torch.Tensor],
         List[Image.Image],
         List[np.ndarray]
-    ], refiner_prompt: str
+    ], param: Txt2ImgRequest
 ):
     # Load the refiner model for image-to-image generation.
     model = load_sdxl_refiner_model()

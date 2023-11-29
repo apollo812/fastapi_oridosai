@@ -80,6 +80,7 @@ async def i2i(request_body: Img2ImgRequest = Depends(), file: UploadFile = File(
 
     return Response(content=file_content, media_type="image/png") # Return the image content as the API response
 
+
 # Define a route to handle the image-to-image conversion using URL endpoint
 @app.post("/img2img_url", status_code=HTTP_201_CREATED)
 async def i2i_url(request_body: Img2ImgRequest):

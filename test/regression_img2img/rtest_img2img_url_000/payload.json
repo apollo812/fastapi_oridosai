@@ -1,0 +1,21 @@
+{
+  "api_key": "",
+  "prompt": "An image sunset, high resolution, no couple",
+  "prompt2": "a dog",
+  "image": "https://cdn.discordapp.com/attachments/1126084296071983106/1179150034374246441/cgrafixstudio_An_image_a_happy_couple_walking_along_the_beach_b_3aea68b9-76e3-4953-9783-c6af4cfb400b.png?ex=6578bc0b&is=6566470b&hm=e85fff03673e15ffad0fdd28d16506483269878b774ac7f8f4ca54180b875b2b&",
+  "strength": 0.3,
+  "num_inference_steps": 50,
+  "denoising_start": 0,
+  "denoising_end": 0,
+  "guidance_scale": 5,
+  "negative_prompt": "nude adult porn",
+  "negative_prompt_2": "nude adult porn",
+  "num_images_per_prompt": 1,
+  "eta": 0,
+  "output_type": "pil",
+  "return_dict": false,
+  "guidance_rescale": 0,
+  "aesthetic_score": 6,
+  "negative_aesthetic_score": 2.5,
+  "clip_skip": 1
+}

@@ -1,0 +1,44 @@
+{
+  "api_key": "",
+  "scheduler_name": "ddim",
+  "prompt": "A cartoon image of a happy monkey standing, laughing, full view, on a solid white background, detailed, 8k",
+  "prompt2": "",
+  "num_inference_steps": 25,
+  "seed": -1,
+  "height": 1024,
+  "width": 1024,
+  "denoising_end": 0,
+  "guidance_scale": 7,
+  "negative_prompt": "nude adult porn",
+  "negative_prompt_2": "nude adult porn",
+  "num_images_per_prompt": 1,
+  "eta": 0,
+  "output_type": "pil",
+  "return_dict": false,
+  "guidance_rescale": 0,
+  "original_size": [
+    1024,
+    1024
+  ],
+  "crops_coords_top_left": [
+    0,
+    0
+  ],
+  "target_size": [
+    1024,
+    1024
+  ],
+  "negative_original_size": [
+    1024,
+    1024
+  ],
+  "negative_crops_coords_top_left": [
+    0,
+    0
+  ],
+  "negative_target_size": [
+    1024,
+    1024
+  ],
+  "model": "base"
+}

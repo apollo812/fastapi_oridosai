@@ -70,7 +70,6 @@ def refinerImg(img: Union[
     model = load_sdxl_refiner_model()
 
     init_image = load_image(img).convert("RGB")
-    prompt = refiner_prompt
 
     # Generate an image based on the image with input text prompts and other parameters using the loaded model.
     image = model(

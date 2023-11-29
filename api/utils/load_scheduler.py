@@ -3,7 +3,7 @@ from diffusers import DPMSolverMultistepScheduler, DPMSolverSinglestepScheduler,
 
 
 # Define a function to load a diffuser scheduler based on the specified scheduler name.
-def load_scheduler(scheduler: str):
+def load_scheduler(scheduler: str, model):
     # Define the main configuration for the diffuser schedulers.
     main_config = {
         'beta_start': 0.00085,
@@ -21,8 +21,7 @@ def load_scheduler(scheduler: str):
         case 'dpmpp_2m_k':
             # Recommend steps 20 ~ 30
             dpmpp_2m_k = DPMSolverMultistepScheduler(**main_config)
-            model.scheduler = dpmpp_2m_k
-            return "result2"
+            return dpmpp_2m_k
         case 'unipc':
             # Recommend steps 20 ~ 30
             unipc = UniPCMultistepScheduler(**main_config)
@@ -31,6 +30,6 @@ def load_scheduler(scheduler: str):
             # Recommend steps 10 ~ 15
             # guidance_rescale=0.7
             ddim = DDIMScheduler.from_config(
-                **main_config, rescale_betas_zero_snr=True, timestep_spacing="trailing"
+                model.scheduler.config, rescale_betas_zero_snr=True, timestep_spacing="trailing"
             )
             return ddim

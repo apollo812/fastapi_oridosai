@@ -15,11 +15,11 @@ class Img2ImgRequest(BaseModel):
     prompt: Optional[str] = "High resolution"
     prompt2: Optional[str] = ""
     image: Optional[str] = ""
-    strength: Optional[float] = 0.3
+    strength: Optional[float] = 0.75
     num_inference_steps: Optional[int] = 50
-    denoising_start: Optional[float] = 0.0
-    denoising_end: Optional[float] = 0.0
-    guidance_scale: Optional[float] = 5.0
+    denoising_start: Optional[float] = 0.0085
+    denoising_end: Optional[float] = 0.12
+    guidance_scale: Optional[float] = 7.5
     negative_prompt: Optional[str] = "nude adult porn"
     negative_prompt_2: Optional[str] = "nude adult porn"
     num_images_per_prompt: Optional[int] = 1

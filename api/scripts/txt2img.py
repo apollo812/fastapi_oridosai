@@ -73,6 +73,14 @@ def refinerImg(img: Union[
     prompt = refiner_prompt
 
     # Generate an image based on the image with input text prompts and other parameters using the loaded model.
-    image = model(prompt, image=init_image).images[0]
+    image = model(
+        # prompt, 
+        image=init_image,
+        prompt=param.prompt, 
+        negative_prompt=param.negative_prompt,
+        strength=0.75, 
+        guidance_scale=7.5,
+        num_inference_steps=50
+    ).images[0]
 
     return image                     # Return the generated image.
